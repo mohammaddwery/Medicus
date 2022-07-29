@@ -9,7 +9,7 @@
         android:name="com.medicus.app.presentation.biomarkers.BiomarkersFragment"
         tools:layout="@layout/fragment_biomarkers">
         <action
-            android:id="@+id/action_characters_to_characterDetail"
+            android:id="@+id/action_biomarkers_to_biomarker_details"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"

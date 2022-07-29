@@ -76,7 +76,6 @@ class BiomarkersFragment : BaseFragment<FragmentBiomarkersBinding, BiomarkersVie
 
     private fun bindSuccessState(biomarkers: List<Biomarker>) {
         binding.swipeRefresh.isRefreshing = false
-
         with(binding.networkStateLayout) {
             root.visibility = View.GONE
             progressBar.visibility = View.GONE
@@ -86,7 +85,7 @@ class BiomarkersFragment : BaseFragment<FragmentBiomarkersBinding, BiomarkersVie
 
     private fun bindNoResultsState() {
         binding.swipeRefresh.isRefreshing = false
-
+        biomarkersAdapter.setList(listOf())
         with(binding.networkStateLayout) {
             root.visibility = View.VISIBLE
             errorMsg.visibility = View.VISIBLE
@@ -98,7 +97,7 @@ class BiomarkersFragment : BaseFragment<FragmentBiomarkersBinding, BiomarkersVie
 
     private fun bindFailureState(message: String) {
         binding.swipeRefresh.isRefreshing = false
-
+        biomarkersAdapter.setList(listOf())
         with(binding.networkStateLayout) {
             root.visibility = View.VISIBLE
             errorMsg.visibility = View.VISIBLE

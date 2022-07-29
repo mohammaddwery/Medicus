@@ -52,7 +52,7 @@ class BiomarkersViewModel(
         } catch (e: NoConnectionException) {
             _biomarkersStateFlow.emit(UiState.failure(e.message))
         } catch (e: Exception) {
-            _biomarkersStateFlow.emit(UiState.failure("Something_went_wrong"))
+            _biomarkersStateFlow.emit(UiState.failure("Something went wrong"))
         }
     }
 
