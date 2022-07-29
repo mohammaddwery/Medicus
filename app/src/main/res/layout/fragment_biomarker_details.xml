@@ -52,18 +52,22 @@
                         <androidx.appcompat.widget.AppCompatTextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginEnd="@dimen/dp_4"
                             android:text="@{biomarker.symbol}"
                             android:textSize="@dimen/sp_18"
                             android:textColor="@color/black"
                             tools:text="ASD45"/>
-                        <androidx.appcompat.widget.AppCompatImageView
-                            android:layout_width="@dimen/dp_16"
-                            android:layout_height="@dimen/dp_16"
-                            android:cropToPadding="true"
-                            android:scaleType="centerCrop"
+
+                        <androidx.appcompat.widget.AppCompatImageButton
+                            android:id="@+id/info_ImageButton"
+                            android:layout_width="@dimen/dp_24"
+                            android:layout_height="@dimen/dp_24"
                             android:layout_gravity="center_vertical"
-                            android:src="@drawable/ic_info"/>
+                            android:background="?selectableItemBackgroundBorderless"
+                            android:cropToPadding="true"
+                            android:padding="@dimen/dp_2"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/ic_info"
+                            tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
                     </LinearLayout>
                     <androidx.appcompat.widget.AppCompatTextView
                         android:layout_width="wrap_content"
@@ -115,6 +119,9 @@
                 android:id="@+id/insight_card_layout"
                 app:title="@{@string/insight}"
                 app:content="@{biomarker.insight}" />
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_32" />
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 </layout>
