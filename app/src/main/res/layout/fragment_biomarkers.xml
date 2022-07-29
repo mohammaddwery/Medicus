@@ -12,16 +12,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@android:color/transparent">
-            <androidx.appcompat.widget.AppCompatTextView
-                app:layout_scrollFlags="scroll|exitUntilCollapsed"
-                android:layout_width="wrap_content"
+            <FrameLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/dp_16"
-                android:layout_marginVertical="@dimen/dp_16"
-                android:text="@string/report_list"
-                android:textStyle="bold"
-                android:textColor="@color/black"
-                android:textSize="@dimen/sp_24" />
+                app:layout_scrollFlags="scroll|exitUntilCollapsed">
+               <include layout="@layout/screen_title_layout"
+                   app:title="@{@string/report_list}"
+                   android:layout_marginHorizontal="@dimen/dp_16"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content" />
+            </FrameLayout>
         </com.google.android.material.appbar.AppBarLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout

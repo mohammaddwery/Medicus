@@ -33,8 +33,7 @@ abstract class BaseRecyclerAdapter<T : Any, VB : ViewDataBinding> :
     )
 
     companion object {
-        class BaseViewHolder<VB : ViewDataBinding>(var binding: VB) :
-            RecyclerView.ViewHolder(binding.root)
+        class BaseViewHolder<VB : ViewDataBinding>(var binding: VB) : RecyclerView.ViewHolder(binding.root)
     }
 
 }

@@ -10,9 +10,19 @@
         tools:layout="@layout/fragment_biomarkers">
         <action
             android:id="@+id/action_biomarkers_to_biomarker_details"
+            app:destination="@id/biomarkerDetailFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right"/>
+    </fragment>
+    <fragment
+        android:id="@+id/biomarkerDetailFragment"
+        android:name="com.medicus.app.presentation.biomarker_details.BiomarkerDetailsFragment"
+        tools:layout="@layout/fragment_biomarker_details" >
+        <argument
+            android:name="biomarker"
+            app:nullable="false"
+            app:argType="com.medicus.app.data.model.Biomarker" />
     </fragment>
 </navigation>

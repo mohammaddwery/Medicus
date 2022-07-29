@@ -1,6 +1,5 @@
 package com.medicus.app.presentation.common
 
-import android.graphics.Color
 import android.widget.ImageView
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.databinding.BindingAdapter
@@ -24,4 +23,9 @@ fun ImageView.setBiomarkerDrawable(color: String?) {
         radius=radius.toFloat(),
         stroke=stroke.toFloat()
     ))
+}
+
+@BindingAdapter("biomarkerTextValue")
+fun AppCompatTextView.setBiomarkerTextValue(value: String?) {
+    this.text = "${context.getString(R.string.your_result_is)} $value"
 }

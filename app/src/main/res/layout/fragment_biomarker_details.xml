@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="biomarker"
+            type="com.medicus.app.data.model.Biomarker" />
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:paddingHorizontal="@dimen/dp_16">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <include layout="@layout/screen_title_layout"
+                app:title="@{@string/biomarker_details}"
+                />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:id="@+id/biomarkerInfo_layout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintTop_toTopOf="@+id/biomarker_Container"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintBottom_toBottomOf="@+id/biomarker_Container">
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingHorizontal="@dimen/dp_8"
+                        android:background="@drawable/category_background"
+                        android:text="@{biomarker.category}"
+                        android:textSize="@dimen/sp_10"
+                        android:textColor="@color/grey"
+                        tools:text="Blood"/>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_8"
+                        android:layout_marginBottom="@dimen/dp_8"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/dp_4"
+                            android:text="@{biomarker.symbol}"
+                            android:textSize="@dimen/sp_18"
+                            android:textColor="@color/black"
+                            tools:text="ASD45"/>
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="@dimen/dp_16"
+                            android:layout_height="@dimen/dp_16"
+                            android:cropToPadding="true"
+                            android:scaleType="centerCrop"
+                            android:layout_gravity="center_vertical"
+                            android:src="@drawable/ic_info"/>
+                    </LinearLayout>
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/dp_8"
+                        android:text="@{biomarker.date}"
+                        android:textSize="@dimen/sp_14"
+                        tools:text="May 25, 2021 6:58 PM"
+                        android:textColor="@color/black" />
+                </LinearLayout>
+                <FrameLayout
+                    android:id="@+id/biomarker_Container"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent">
+                    <include
+                        layout="@layout/biomarker_symbol"
+                        android:id="@+id/biomarker_layout"
+                        app:color="@{biomarker.color}"
+                        app:symbol="@{biomarker.symbol}" />
+                </FrameLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/biomarkerValue_textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/dp_16"
+                android:gravity="center"
+                tools:text="Your result is 100"
+                app:biomarkerTextValue="@{biomarker.value}"
+                app:biomarkerTextColor="@{biomarker.color}"
+                android:textSize="@dimen/sp_16"
+                android:textStyle="bold" />
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_16"/>
+            <include
+                layout="@layout/titled_card_layout"
+                android:id="@+id/info_card_layout"
+                app:title="@{@string/info}"
+                app:content="@{biomarker.info}" />
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_24"/>
+            <include
+                layout="@layout/titled_card_layout"
+                android:id="@+id/insight_card_layout"
+                app:title="@{@string/insight}"
+                app:content="@{biomarker.insight}" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</layout>

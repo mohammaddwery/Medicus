@@ -15,12 +15,10 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/biomarker_layout"
         android:layout_width="@dimen/dp_96"
-        android:layout_height="@dimen/dp_96"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent">
+        android:layout_height="@dimen/dp_96">
 
         <ImageView
+            android:id="@+id/biomarker_symbol_background"
             android:layout_width="@dimen/dp_96"
             android:layout_height="@dimen/dp_96"
             biomarkerDrawable="@{color}"

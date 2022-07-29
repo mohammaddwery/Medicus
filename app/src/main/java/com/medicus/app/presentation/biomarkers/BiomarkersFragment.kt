@@ -2,6 +2,8 @@ package com.medicus.app.presentation.biomarkers
 
 import android.view.View
 import android.widget.Toast
+import androidx.navigation.fragment.FragmentNavigatorExtras
+import androidx.navigation.fragment.findNavController
 import com.medicus.app.R
 import com.medicus.app.core.UiStateStatus
 import com.medicus.app.data.model.Biomarker
@@ -111,13 +113,13 @@ class BiomarkersFragment : BaseFragment<FragmentBiomarkersBinding, BiomarkersVie
     }
 
     private fun onBiomarkerClicked(biomarker: Biomarker, binding: BiomarkerListItemBinding) {
-        // TODO
-//        val extras = FragmentNavigatorExtras(
-//            binding.biomarkerAvatar to "biomarkerAvatar_${biomarker.id}",
-//        )
-//        findNavController().navigate(
-//            BiomarkersFragmentDirections.actionBiomarkersToBiomarkerDetail(biomarker),
-//            extras
-//        )
+        val extras = FragmentNavigatorExtras(
+            binding.biomarkerLayout.biomarkerLayout to "biomarkerLayout_${biomarker.symbol}_${biomarker.id}",
+        )
+
+        findNavController().navigate(
+            BiomarkersFragmentDirections.actionBiomarkersToBiomarkerDetails(biomarker),
+            extras
+        )
     }
 }
