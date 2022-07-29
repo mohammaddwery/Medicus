@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="biomarker"
+            type="com.medicus.app.data.model.Biomarker" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/card_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:foreground="?selectableItemBackground"
+        android:layout_marginHorizontal="@dimen/dp_24">
+
+        <include layout="@layout/biomarker_symbol"
+            android:id="@+id/biomarker_layout"
+            app:color="@{biomarker.color}"
+            app:symbol="@{biomarker.symbol}"
+            />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginStart="@dimen/dp_16"
+            android:layout_marginEnd="@dimen/dp_48"
+            app:layout_constraintStart_toEndOf="@+id/biomarker_layout"
+            app:layout_constraintTop_toTopOf="@+id/biomarker_layout"
+            app:layout_constraintBottom_toBottomOf="@+id/biomarker_layout">
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/dp_8"
+                android:text="@{biomarker.date}"
+                android:textSize="@dimen/sp_14"
+                tools:text="May 25, 2021 6:58 PM"
+                android:textColor="@color/grey" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{biomarker.value}"
+                android:textSize="@dimen/sp_14"
+                tools:text="201"
+                android:textColor="@color/grey" />
+        </LinearLayout>
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/forward_imageView"
+            android:layout_width="@dimen/dp_16"
+            android:layout_height="@dimen/dp_16"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_arrow_forward"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/biomarker_layout"
+            app:layout_constraintBottom_toBottomOf="@+id/biomarker_layout"
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

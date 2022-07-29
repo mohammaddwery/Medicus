@@ -9,7 +9,7 @@ data class UiState<T>(
 ) {
 
     companion object{
-        fun <T> success(data: T?): UiState<T> = UiState(
+        fun <T> success(data: T): UiState<T> = UiState(
                 status = UiStateStatus.SUCCESS,
                 data = data,
             )
@@ -17,8 +17,11 @@ data class UiState<T>(
         fun <T> noResults(): UiState<T> =
             UiState(status = UiStateStatus.NO_RESULTS)
 
-        fun <T> loading(): UiState<T> =
-            UiState(status = UiStateStatus.LOADING)
+        fun <T> loading(oldData: T?): UiState<T> =
+            UiState(
+                status = UiStateStatus.LOADING,
+                data = oldData,
+                )
 
         fun <T> failure(message: String?): UiState<T> = UiState(
                 status = UiStateStatus.FAILURE,

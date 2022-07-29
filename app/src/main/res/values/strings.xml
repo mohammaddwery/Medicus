@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Medicus</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="report_list">Report List</string>
+    <string name="retry">retry</string>
+    <string name="no_results_message">Sorry.. No results found!</string>
 </resources>

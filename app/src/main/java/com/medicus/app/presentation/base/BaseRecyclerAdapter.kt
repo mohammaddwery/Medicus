@@ -21,7 +21,7 @@ abstract class BaseRecyclerAdapter<T : Any, VB : ViewDataBinding> :
 
     abstract fun getLayout(): Int
 
-    var listener: ((item: T) -> Unit)? = null
+    var listener: ((item: T, binding: VB) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = BaseViewHolder<VB>(
         DataBindingUtil.inflate(
