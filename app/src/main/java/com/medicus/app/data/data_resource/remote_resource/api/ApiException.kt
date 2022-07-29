@@ -4,4 +4,4 @@ import java.io.IOException
 
 data class ApiException(
     val error: ErrorResponse
-) : IOException("${error.message?:""} ${error.status?:""}")
+) : IOException(error.message?:"Something went wrong")

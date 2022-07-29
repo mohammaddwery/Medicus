@@ -4,6 +4,7 @@ import androidx.lifecycle.viewModelScope
 import com.medicus.app.data.data_resource.UiState
 import com.medicus.app.data.data_resource.remote_resource.api.ApiException
 import com.medicus.app.data.data_resource.remote_resource.api.NetworkConnectionInterceptor
+import com.medicus.app.data.data_resource.remote_resource.api.NoConnectionException
 import com.medicus.app.data.model.Biomarker
 import com.medicus.app.data.model.User
 import com.medicus.app.data.repository.biomarker.BiomarkerRepository
@@ -42,13 +43,13 @@ class BiomarkersViewModel(
     private fun fetchBiomarkers(userId: String) = viewModelScope.launch {
         try {
             _biomarkersStateFlow.emit(UiState.loading(oldData = _biomarkersStateFlow.value.data))
-            delay(2000)
             val biomarkers = biomarkerRepository.fetchBiomarkers(userId = userId)
             if(biomarkers.isEmpty()) _biomarkersStateFlow.value = UiState.noResults()
-            else _biomarkersStateFlow.emit(UiState.success(biomarkers))
+            // TODO: The returned response's body has entries without correct data(contain only id variable) so I exclude it.
+            else _biomarkersStateFlow.emit(UiState.success(biomarkers.filterNot { it.symbol ==null && it.value ==null }))
         } catch (e: ApiException) {
-            _biomarkersStateFlow.emit(UiState.failure(e.error.message))
-        } catch (e: NetworkConnectionInterceptor.NoConnectionException) {
+            _biomarkersStateFlow.emit(UiState.failure(e.message))
+        } catch (e: NoConnectionException) {
             _biomarkersStateFlow.emit(UiState.failure(e.message))
         } catch (e: Exception) {
             _biomarkersStateFlow.emit(UiState.failure("Something_went_wrong"))

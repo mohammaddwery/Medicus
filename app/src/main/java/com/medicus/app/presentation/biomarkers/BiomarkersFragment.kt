@@ -106,7 +106,7 @@ class BiomarkersFragment : BaseFragment<FragmentBiomarkersBinding, BiomarkersVie
             progressBar.visibility = View.GONE
             errorMsg.text = message
             retryButton.setOnClickListener {
-                // ToDO: implement retry behavior
+                viewModel.refreshBiomarkers()
             }
         }
     }

@@ -9,8 +9,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
-
-class APIServiceProvider {
+class HttpClientManager {
     fun provide(context: Context, baseUrl: String): Retrofit {
         val client = OkHttpClient.Builder()
             .handleErrors()
@@ -54,18 +53,16 @@ class APIServiceProvider {
             val code = response.code
             val body = response.body
 
-            throw if (body == null) {
-                ApiException(ErrorResponse(code.toString(), "Server response is empty"))
-            } else {
-                try {
-                    val gson = Gson()
-                    val errorResponse: ErrorResponse = gson.fromJson(response.body!!.charStream(), ErrorResponse::class.java)
-                    ApiException(errorResponse)
-                } catch (ex: Exception) {
-                    ApiException(ErrorResponse(code.toString(), "Cannot parse error: ${ex.message}"))
-                } finally {
-                    body.close()
-                }
+            if(body == null) throw ApiException(ErrorResponse(statusCode = code.toString(), message= "Something went wrong"))
+
+            throw try {
+                val gson = Gson()
+                val errorResponse: ErrorResponse = gson.fromJson(response.body!!.charStream(), ErrorResponse::class.java)
+                ApiException(errorResponse)
+            } catch (ex: Exception) {
+                ApiException(ErrorResponse(statusCode=code.toString(), message="Something went wrong"))
+            } finally {
+                body.close()
             }
         }
     }

@@ -6,7 +6,11 @@ import com.medicus.app.data.repository.user.UserRepository
 import com.medicus.app.data.repository.user.UserRepositoryImp
 import org.koin.dsl.module
 
-val repoModule = module {
-    factory<BiomarkerRepository> { BiomarkerRepositoryImp() }
+val repositoryModule = module {
+    factory<BiomarkerRepository> {
+        BiomarkerRepositoryImp(
+            get()
+        )
+    }
     factory<UserRepository> { UserRepositoryImp() }
 }

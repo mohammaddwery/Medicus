@@ -1,7 +1,7 @@
 package com.medicus.app
 import android.app.Application
 import com.medicus.app.di.apiServicesModule
-import com.medicus.app.di.repoModule
+import com.medicus.app.di.repositoryModule
 import com.medicus.app.di.viewModelsModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
@@ -10,7 +10,7 @@ import org.koin.core.logger.Level
 
 class MedicusApplication : Application() {
 
-    val LOG_TAG = "MarvelApplication"
+    val LOG_TAG = "MedicusApplication"
 
     override fun onCreate() {
         super.onCreate()
@@ -21,7 +21,7 @@ class MedicusApplication : Application() {
         startKoin {
             androidLogger(Level.ERROR)
             androidContext(this@MedicusApplication)
-            modules(apiServicesModule, repoModule, viewModelsModule)
+            modules(apiServicesModule, repositoryModule, viewModelsModule)
         }
     }
 }

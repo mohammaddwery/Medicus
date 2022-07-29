@@ -25,9 +25,4 @@ class NetworkConnectionInterceptor(context: Context) : Interceptor {
             val netInfo = connectivityManager.activeNetworkInfo
             return netInfo != null && netInfo.isConnected
         }
-
-    inner class NoConnectionException : IOException() {
-        override val message: String
-            get() = "No Internet Connection"
-    }
 }
