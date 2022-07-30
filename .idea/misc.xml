@@ -3,9 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Bcc/AndroidStudioProjects/Medicus/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.195" />
         <entry key="..\:/Users/Bcc/AndroidStudioProjects/Medicus/app/src/main/res/drawable/category_background.xml" value="0.1375" />
         <entry key="..\:/Users/Bcc/AndroidStudioProjects/Medicus/app/src/main/res/drawable/ic_arrow_forward.xml" value="0.1395" />
         <entry key="..\:/Users/Bcc/AndroidStudioProjects/Medicus/app/src/main/res/drawable/ic_info.xml" value="0.2115" />
+        <entry key="..\:/Users/Bcc/AndroidStudioProjects/Medicus/app/src/main/res/drawable/ic_launcher_background.xml" value="0.195" />
         <entry key="..\:/Users/Bcc/AndroidStudioProjects/Medicus/app/src/main/res/layout/activity_main.xml" value="0.203125" />
         <entry key="..\:/Users/Bcc/AndroidStudioProjects/Medicus/app/src/main/res/layout/biomarker_list_item.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Bcc/AndroidStudioProjects/Medicus/app/src/main/res/layout/biomarker_symbol.xml" value="0.203125" />
